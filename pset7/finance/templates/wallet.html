@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Wallet
+{% endblock %}
+
+{% block main %}
+     <h3>
+             Here's what you have in your wallet. 
+     </h3>
+     <div>
+         <table>
+             <tr class = "header">
+                 <td>Symbol</td> <td>Shares</td> <td>Price</td> <td>TOTAL</td>
+             </tr>
+             {% for share in WALLET %}
+             <tr>
+                 <td> {{ WALLET[loop.index0]["stock_symbol"] }} </td> 
+                 <td> {{ WALLET[loop.index0]["number_of_shares"] }}</td>
+                 <td> {{ (WALLET[loop.index0]["lkprice"]|round(2))|usd }} </td>
+                 <td> {{ (WALLET[loop.index0]["share_value"]|round(2))|usd }}</td>
+             </tr>
+             {% endfor %}
+             <tr>
+                 <td> CASH </td> <td colspan="2"></td> <td> {{ (CASH|round(2))|usd }}</td>
+             </tr>
+             <tr class = "footer">
+                 <td colspan="3"></td> <td> {{ ((SUM + CASH)|round(2))|usd }}</td>
+             </tr>
+         </table>
+     </div>
+{% endblock %}

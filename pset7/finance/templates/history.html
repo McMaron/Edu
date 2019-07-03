@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    history
+{% endblock %}
+
+{% block main %}
+     <h3>
+             Your all transactions so far. 
+     </h3>
+     <div>
+         <table>
+             <tr class = "header">
+                 <td>Symbol</td> <td>Shares</td> <td>Price</td> <td>TOTAL EXPENSE/INCOM</td>
+             </tr>
+             {% for record in HISTORY %}
+             <tr>
+                 <td> {{ HISTORY[loop.index0]["stock_symbol"] }} </td> 
+                 <td> {{ HISTORY[loop.index0]["number_stocks"] }}</td>
+                 <td> {{ (HISTORY[loop.index0]["unit_price"]|round(2))|usd }} </td>
+                 <td> {{ (HISTORY[loop.index0]["total_price"]|round(2))|usd }}</td>
+             </tr>
+             {% endfor %}
+         </table>
+     </div>
+{% endblock %}

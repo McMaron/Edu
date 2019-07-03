@@ -1,0 +1,22 @@
+0.  In reality it's a lung disease. In pset5 it's the longest single word handled by the dictionary.
+1.  Getrusga returns resource usage statistics for a calling process.
+2.  Struct rusage contains 16 members.
+3.  Passing a reference to the struct is more effective than passing a copy of whole struct. Structs might be big in size, passing a copy to a function uses extra memory in stack.
+4.  Spell-checker's "for loop" starts at the beginning of a file and last till the end of file is reached. 
+    "fgetc" reads one character from the file at each iteration. Each character is first check if it's an alphabet sign or a "'" character. 
+    If it's the "'" it can't be the first letter of a word. 
+    If the character meets the conditions it's put into the array "word" on "index" place. "index" grows by one each time a letter is added to the "word". 
+    If index grows bigger than LENGTH "while loop" will move till the end of the string in the file and set the index to zero, preparing for new word. 
+    If the string from the file contains number another while loop moves till the end of it not passing that string to the array "word". 
+    Finally if the "fgetc" hits a character different than alphanumberic and there are some letters loaded into the array "word" the loop will add a \0 sign at the end of the array,
+    increase the counter "words" by one and hand over this "word" to "check" functions. 
+    If "check" returns there's no such word in the dictionary, the word is printed on the screen and misspellings counter increases by one. 
+    Index is set to zero and another character is read from the file.
+5.  "fscanf" would include punctuation signs to the strings/words. If this was passed to check function, it would be interpreted as misspelled word, 
+    or there would have to be additional code written to avoid this. Moreover in case a longer then allowed string was met, fscanf would split it and return two strings instead of ignoring the string. 
+    This would cause another problmes for check function.
+6.  Declaring constant parameters prevents from changing them after declaration. The data is used for comparision, therefore it should be secured from changing it.
+7.  TODO
+8.  TODO
+9.  TODO
+10. TODO
